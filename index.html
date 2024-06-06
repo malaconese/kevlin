@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Dia dos Namorados</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #6a0dad, #ff69b4, #7b68ee);
+            background-size: 600% 600%;
+            animation: gradientAnimation 10s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .lantern {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 80px;
+            background: rgba(255, 215, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            animation: floatLanterns 5s infinite ease-in-out;
+        }
+
+        @keyframes floatLanterns {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-200px) rotate(15deg); opacity: 0.7; }
+            100% { transform: translateY(-400px) rotate(30deg); opacity: 0; }
+        }
+
+        .lantern:nth-child(odd) {
+            animation-duration: 6s;
+        }
+
+        .lantern:nth-child(even) {
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+        .lantern:nth-child(3n) {
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .lantern:nth-child(4n) {
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        .text-container {
+            position: absolute;
+            text-align: center;
+            font-family: 'Reenie Beanie', cursive;
+            font-size: 40px;
+            color: white;
+            opacity: 0;
+        }
+
+        .text-animation {
+            animation: cascadeText 10s forwards;
+        }
+
+        @keyframes cascadeText {
+            0% {
+                transform: translateY(200px);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(100px);
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        /* Animation for fading in */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Button style */
+        .btn-enter {
+            display: none;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            z-index: 1000; /* Added to ensure the button is clickable */
+        }
+
+        /* Title style */
+        .title {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Reenie Beanie', cursive; 
+            font-size: 140px; 
+            font-weight: bold; 
+            color: white; 
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        /* Animation for fading out */
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Image style */
+        .rapunzel {
+            position: absolute;
+            bottom: 0;
+            width: 200px;
+            height: auto;
+            z-index: 500; /* Make sure image is below the button */
+            animation: fadeIn 2s forwards;
+        }
+
+        .rapunzel.left {
+            left: 10px;
+        }
+
+        /* Animation for fading out the image */
+        @keyframes fadeOutImage {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="lantern" style="left: 10%;"></div>
+    <div class="lantern" style="left: 30%;"></div>
+    <div class="lantern" style="left: 50%;"></div>
+    <div class="lantern" style="left: 70%;"></div>
+    <div class="lantern" style="left: 90%;"></div>
+
+    <!-- Mensagem 1 -->
+    <div class="text-container text-animation">
+        Bem Vindo Meu Amor
+    </div>
+
+    <!-- Mensagem 2 -->
+    <div class="text-container text-animation" style="animation-delay: 5s;">
+        Espero que goste...
+    </div>
+
+    <!-- Title -->
+    <div class="title" id="title" style="animation-delay: 14s;">
+        Enrolados
+    </div>
+
+    <!-- Button -->
+    <button class="btn-enter" id="btn-enter" onclick="showMessage()">Entrar</button>
+
+    <!-- Hidden Message -->
+    <div id="hidden-message" class="text-container" style="opacity: 0; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        Parabéns meu amor, você chegou até aqui. Eu queria falar que eu te amo muito, tudo isso foi para você, para que seu momento torne mais especial. Espero que tenha se divertido achando os enigmas e decifrando o que eu fiz. Eu te amo, my baby.
+    </div>
+
+    <!-- Rapunzel Image -->
+    <img src="https://images.vexels.com/media/users/3/145140/isolated/preview/49015111c7e7e8bf8d34a0ac0f76f171-icone-de-pequenos-raios-ondulados-do-sol.png" class="rapunzel left" id="rapunzel-image">
+
+    <script>
+        function showMessage() {
+            var title = document.getElementById("title");
+            var btnEnter = document.getElementById("btn-enter");
+            var hiddenMessage = document.getElementById("hidden-message");
+            var rapunzelImage = document.getElementById("rapunzel-image");
+
+            // Fade out the title, button, and image
+            title.style.animation = "fadeOut 2s forwards";
+            btnEnter.style.animation = "fadeOut 2s forwards";
+            rapunzelImage.style.animation = "fadeOutImage 2s forwards";
+
+            // Fade in the hidden message after the title, button, and image have faded out
+            setTimeout(function() {
+                hiddenMessage.style.opacity = 1;
+                hiddenMessage.style.animation = "fadeIn 2s forwards";
+            }, 2000);
+        }
+
+        // Show the button when the title appears
+        window.onload = function() {
+            setTimeout(function() {
+                var btnEnter = document.getElementById("btn-enter");
+                btnEnter.style.display = 'block';
+                btnEnter.style.opacity = '1';
+                btnEnter.style.animation = 'fadeIn 2s forwards';
+            }, 14000);
+        }
+    </script>
+
+</body>
+</html>
